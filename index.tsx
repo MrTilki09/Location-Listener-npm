@@ -1,6 +1,5 @@
 import Geolocation from "@react-native-community/geolocation";
 import { createContext, useContext, useEffect, useState, useRef } from "react";
-// import * as GlobalFunctions from "../Functions/GlobalFunctions";
 
 export type LocationType = { lat: number; long: number };
 
@@ -42,8 +41,6 @@ export default function NewLocationProvider({ children, onLocation }: { children
         const newLoc = { lat: position.coords.latitude, long: position.coords.longitude };
         setLocation(newLoc);
         if (onLocation) onLocation(newLoc);
-        //logging user location
-        // GlobalFunctions.logAndPersistLocation(position.coords.latitude, position.coords.longitude, 'geolocation');
       },
       error => {
         console.log('Watcher error:', error);
