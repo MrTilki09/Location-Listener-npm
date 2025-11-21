@@ -1,0 +1,30 @@
+{
+  "name": "@eyuphantilki/location-listener",
+  "version": "1.0.0",
+  "description": "Setup your Location listener for your app, perfect for when you want to log the users location and track at the same time.",
+  "keywords": [
+    "location",
+    "logging",
+    "log",
+    "tracking",
+    "react-native",
+    "geolocation",
+    "gps"
+  ],
+  "license": "ISC",
+  "author": "eyuphantilki",
+  "main": "index.tsx",
+  "types": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "@react-native-community/geolocation": ">=3.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.6",
+    "@react-native-community/geolocation": "^3.4.0",
+    "react": "^19.2.0"
+  }
+}
