@@ -1,6 +1,6 @@
 {
   "name": "@eyuphantilki/location-listener",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Setup your Location listener for your app, perfect for when you want to log the users location and track at the same time.",
   "keywords": [
     "location",
@@ -21,6 +21,10 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "@react-native-community/geolocation": ">=3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrTilki09/Location-Listener-npm.git"
   },
   "devDependencies": {
     "@types/react": "^19.2.6",
