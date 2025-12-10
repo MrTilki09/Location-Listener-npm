@@ -1,6 +1,6 @@
 {
   "name": "@eyuphantilki/location-listener",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Setup your Location listener for your app, perfect for when you want to log the users location and track at the same time.",
   "keywords": [
     "location",
