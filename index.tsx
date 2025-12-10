@@ -13,7 +13,18 @@ const LocationListener = createContext<LocationContextType>({
   startListening: () => {}
 });
 
-export default function NewLocationProvider({ children, onLocation }: { children: React.ReactNode; onLocation?: (loc: LocationType) => void }) {
+interface LocationProviderProps {
+  children: React.ReactNode;
+  onLocation?: (loc: LocationType) => void;
+  highAccuracy?: boolean ;
+  distanceFilter?: number;
+  interval?: number;
+  fastestInterval?: number;
+  timeout?: number;
+  maximumAge?: number;
+}
+
+export default function LocationProvider({ children, onLocation, highAccuracy = false, distanceFilter = 5, interval = 10000, fastestInterval = 5000, timeout = 20000, maximumAge = 5000 }: LocationProviderProps) {
   const [location, setLocation] = useState<LocationType | null>(null);
   const watchIdRef = useRef<number | null>(null);
   const retryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -50,12 +61,12 @@ export default function NewLocationProvider({ children, onLocation }: { children
         }
       },
       {
-        enableHighAccuracy: false,
-        distanceFilter: 5,
-        interval: 10000,
-        fastestInterval: 5000,
-        timeout: 20000,
-        maximumAge: 5000,
+        enableHighAccuracy: highAccuracy,
+        distanceFilter,
+        interval,
+        fastestInterval,
+        timeout,
+        maximumAge,
       },
     );
   };
@@ -74,8 +85,7 @@ export default function NewLocationProvider({ children, onLocation }: { children
           const newLoc = { lat: position.coords.latitude, long: position.coords.longitude };
           setLocation(newLoc);
           if (onLocation) onLocation(newLoc);
-          //logging user location
-        //   GlobalFunctions.logAndPersistLocation(position.coords.latitude, position.coords.longitude, 'geolocation');
+         
           startWatcherOnce();
         },
         error => {
@@ -90,7 +100,7 @@ export default function NewLocationProvider({ children, onLocation }: { children
             retryTimerRef.current = setTimeout(tryGetFast, delay);
           }
         },
-        { enableHighAccuracy: false, timeout: 20000, maximumAge: 10000 }
+        { enableHighAccuracy: highAccuracy, timeout, maximumAge }
       );
     };
 
